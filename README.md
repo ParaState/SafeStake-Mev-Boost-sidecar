@@ -21,8 +21,8 @@ sudo docker compose -f  docker-compose-operator-mev.yml up -d
 
 ---
 ### TODO:
-- test [docker-compose-operator-mev](https://github.com/smallverse/SafeStakeOperator/blob/main/docker-compose-operator-mev.yml) , merge doc to dvf
-- test [docker-compose-operator-mev-dev](https://github.com/smallverse/SafeStakeOperator/blob/main/docker-compose-operator-mev-dev.yml) , merge doc & code to dvf
+- test 默认gas-limit（dvf无需修改代码） [docker-compose-operator-mev](https://github.com/smallverse/SafeStakeOperator/blob/main/docker-compose-operator-mev.yml) , merge doc to dvf
+- test 可设置gas-limit（dvf呀修改代码） [docker-compose-operator-mev-dev](https://github.com/smallverse/SafeStakeOperator/blob/main/docker-compose-operator-mev-dev.yml) , merge doc & code to dvf
 
 
 ---
