@@ -1,4 +1,4 @@
-publish to dev or test
+manual publish to dev or test
 
 ---
 
