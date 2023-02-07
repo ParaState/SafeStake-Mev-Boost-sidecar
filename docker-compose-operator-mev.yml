@@ -117,9 +117,9 @@ services:
       resources:
         limits:
           memory: 5G
-    depends_on:
-      lighthouse:
-        condition: service_started
+    # depends_on:
+    #   lighthouse:
+    #     condition: service_started
 
   dvf_key_tool:
     network_mode: "host"
@@ -136,46 +136,6 @@ services:
       resources:
         limits:
           memory: 5G
-
-volumes:
-  geth-data:
-    driver: local
-    driver_opts:
-      o: bind
-      type: none
-      device: /data/geth
-  lighthouse-data:
-    driver: local
-    driver_opts:
-      o: bind
-      type: none
-      device: /data/lighthouse
-  jwt-data:
-    driver: local
-    driver_opts:
-      o: bind
-      type: none
-      device: /data/jwt
-  operator-data:
-    driver: local
-    driver_opts:
-      o: bind
-      type: none
-      device: /data/operator
-
-    expose:
-      - "25000"
-      - "25001"
-      - "25002"
-      - "25003"
-      - "25004"
-    deploy:
-      resources:
-        limits:
-          memory: 5G
-    depends_on:
-      lighthouse:
-        condition: service_started
 
 volumes:
   geth-data:
