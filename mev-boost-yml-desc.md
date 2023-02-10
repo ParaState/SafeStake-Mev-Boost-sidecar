@@ -10,11 +10,16 @@
     expose:
       - "18550"
 ```
+![img.png](imgs/img-mev-service.png)
 
 2 add mev-boost for lighthouse bn
 
 ```"--builder=http://127.0.0.1:18550"```
+![img.png](imgs/img-lh-bn.png)
 
 3 add mev-boost for validator_client 
 
 ```--private-tx-proposals/--builder-proposals```
+![img.png](imgs/img-mev-vc-0.png)
+
+![img.png](imgs/img-mev-vc-1.png)
