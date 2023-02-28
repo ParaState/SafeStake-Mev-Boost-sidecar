@@ -1,0 +1,137 @@
+version: '3'
+services:
+  geth:
+    image: ethereum/client-go:v1.10.25
+    pull_policy: always
+    restart: unless-stopped
+    network_mode: "host"
+    volumes:
+      - jwt-data:/data/jwt
+      - geth-data:/data/geth
+    command: [
+      "--${GETH_NETWORK}",
+      "--syncmode=snap",
+      "--ignore-legacy-receipts",
+      "--http",
+      "--http.addr=0.0.0.0",
+      "--http.vhosts=*",
+      "--http.port=8545",
+      "--authrpc.addr=0.0.0.0",
+      "--authrpc.vhosts=*",
+      "--authrpc.port=8551",
+      "--discovery.port=30303",
+      "--port=30303",
+      "--datadir=/data/geth",
+      "--pprof",
+      "--pprof.addr=0.0.0.0",
+      "--http.api=engine,eth,web3,net,debug",
+      "--http.corsdomain=*",
+      "--authrpc.jwtsecret=/data/jwt/jwtsecret",
+      "--override.terminaltotaldifficulty=${TTD}"
+    ]
+    expose:
+      - "8545"
+      - "8546"
+      - "8547"
+      - "8551"
+      - "30303"
+  mev-boost:
+    image: flashbots/mev-boost:1.4.0-portable
+    network_mode: "host"
+    pull_policy: always
+    restart: unless-stopped
+    command: -${GETH_NETWORK} -relays ${MEV_BOOST_RELAYS}
+    expose:
+      - "18550"
+  lighthouse:
+    network_mode: "host"
+    image: sigp/lighthouse:v3.4.0
+    pull_policy: always
+    restart: unless-stopped
+    volumes:
+      - geth-data:/data/geth
+      - jwt-data:/data/jwt
+      - lighthouse-data:/data/lighthouse
+    command:
+      [
+        "lighthouse",
+        #lighthouse bn --builder https://mainnet-builder.test
+        "bn",
+        "--builder=http://127.0.0.1:18550",
+        "--network=${LIGHTHOUSE_NETWORK}",
+        "--datadir=/data/lighthouse",
+        # "--jwt-secrets=/data/jwt/jwtsecret",
+        "--execution-jwt=/data/jwt/jwtsecret",
+        "--http",
+        "--listen-address=0.0.0.0",
+        "--http-address=0.0.0.0",
+        "--http-port=5052",
+        "--staking",
+        "--http-allow-sync-stalled",
+        "--merge",
+        "--execution-endpoint=http://127.0.0.1:8551",
+        # "--eth1-endpoints=http://127.0.0.1:8545",
+        "--metrics",
+        "--subscribe-all-subnets",
+        "--import-all-attestations",
+        "--validator-monitor-auto",
+        "--checkpoint-sync-url=https://prater-checkpoint-sync.stakely.io",
+        "--terminal-total-difficulty-override=${TTD}"
+      ]
+    expose:
+      - "5052"
+      - "9000"
+    depends_on:
+      geth:
+        condition: service_started
+      mev-boost:
+        condition: service_started
+  lighthouse-vc:
+    network_mode: "host"
+    image: sigp/lighthouse:v3.4.0
+    pull_policy: always
+    #    restart: unless-stopped
+    volumes:
+      - lighthouse-data-vc:/data/lighthouse-vc
+      - /home/sv/staking_deposit-cli-ef89710-linux-amd64/validator_keys:/root/validator_keys
+    command:
+      [
+        "lighthouse",
+        "vc",
+        "--builder-proposals",
+        "--datadir=/data/lighthouse-vc",
+        "--network=${LIGHTHOUSE_NETWORK}",
+        "--http",
+        "--http-address=0.0.0.0",
+        "--http-port=5062",
+        "--unencrypted-http-transport"
+      ]
+    expose:
+      - "5062"
+
+
+volumes:
+  geth-data:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: /data/geth
+  lighthouse-data:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: /data/lighthouse
+  lighthouse-data-vc:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: /data/lighthouse-vc
+  jwt-data:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: /data/jwt
