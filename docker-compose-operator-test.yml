@@ -93,7 +93,7 @@ services:
     #    restart: unless-stopped
     volumes:
       - lighthouse-data-vc:/data/lighthouse-vc
-      - /home/sv/staking_deposit-cli-ef89710-linux-amd64/validator_keys:/root/validator_keys
+      - /data/validator_keys:/root/validator_keys
     command:
       [
         "lighthouse",
