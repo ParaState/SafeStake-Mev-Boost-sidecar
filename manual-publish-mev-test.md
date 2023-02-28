@@ -7,6 +7,7 @@
 Create local volume directory
 
 ```shell
+# ll
 sudo mkdir -p /data/jwt
 sudo mkdir -p /data/geth
 sudo mkdir -p /data/lighthouse
@@ -17,12 +18,15 @@ sudo mkdir -p /data/lighthouse-vc
 Generate your jwt secret to jwt dirctory
 
 ```shell
+# cat /data/jwt/jwtsecret
 openssl rand -hex 32 | tr -d "\n" | sudo tee /data/jwt/jwtsecret
 ```
 
 run
 
 ```shell
+#cat docker-compose-operator-test.yml
+#cat .env
 sudo docker compose -f docker-compose-operator-test.yml up -d
 ```
 
@@ -31,8 +35,9 @@ sudo docker compose -f docker-compose-operator-test.yml up -d
 
 ## 2 Check
 
-Check Geth (should show false):
+Check Geth (should show false)-交互终端下（`docker exec -it  xxx /bin/sh`）:
 ```shell
+# sudo docker exec -it  safestake-mev-boost-sidecar-geth-1 /bin/sh
 geth attach --datadir /data/geth --exec 'eth.syncing'
 ```
 
@@ -44,5 +49,6 @@ curl localhost:5052/lighthouse/syncing
 ## 3 Begin Validating
 
 ```shell
+# sudo docker exec -it safestake-mev-boost-sidecar-lighthouse-vc-1 /bin/sh
 lighthouse account validator import --directory /root/validator_keys
 ```
