@@ -96,7 +96,7 @@ services:
     pull_policy: always
     #    restart: unless-stopped
     volumes:
-      - lighthouse-data-vc:/data/lighthouse-vc
+      - lighthouse-data-vc:/root/.lighthouse
     command:
       [
         "lighthouse",
