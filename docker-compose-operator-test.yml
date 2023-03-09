@@ -107,7 +107,6 @@ services:
         "--http",
         "--http-address=0.0.0.0",
         "--http-port=5062",
-        "--network=${LIGHTHOUSE_NETWORK}",
         "--unencrypted-http-transport"
       ]
     expose:
