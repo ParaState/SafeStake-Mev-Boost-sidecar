@@ -58,6 +58,8 @@ curl localhost:5052/lighthouse/syncing
 # sudo docker exec -it safestake-mev-boost-sidecar-lighthouse-vc-1 /bin/sh
 
 lighthouse --network prater account validator import --directory /root/.lighthouse/validator_keys
+exit
+sudo docker restart safestake-mev-boost-sidecar-lighthouse-vc-1
 ```
 
 https://www.blocknative.com/blog/ethereum-validator-lighthouse-geth
