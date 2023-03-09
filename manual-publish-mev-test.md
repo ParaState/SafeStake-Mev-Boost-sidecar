@@ -56,5 +56,5 @@ curl localhost:5052/lighthouse/syncing
 
 ```shell
 # sudo docker exec -it safestake-mev-boost-sidecar-lighthouse-vc-1 /bin/sh
-lighthouse account validator import --directory /root/validator_keys
+lighthouse account validator import --directory /data/lighthouse-vc/validator_keys
 ```

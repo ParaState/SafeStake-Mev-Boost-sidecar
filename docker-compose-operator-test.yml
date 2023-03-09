@@ -97,11 +97,11 @@ services:
     #    restart: unless-stopped
     volumes:
       - lighthouse-data-vc:/data/lighthouse-vc
-      - /data/validator_keys:/root/validator_keys
     command:
       [
         "lighthouse",
         "vc",
+        "--network=${LIGHTHOUSE_NETWORK}",
         "--builder-proposals",
         "--datadir=/data/lighthouse-vc",
         "--network=${LIGHTHOUSE_NETWORK}",
