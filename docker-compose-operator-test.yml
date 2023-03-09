@@ -102,7 +102,7 @@ services:
         "lighthouse",
         "vc",
         "--builder-proposals",
-        "--datadir=/data/lighthouse-vc",
+#        "--datadir=/data/lighthouse-vc",
         "--network=${LIGHTHOUSE_NETWORK}",
         "--http",
         "--http-address=0.0.0.0",
