@@ -92,7 +92,7 @@ services:
     network_mode: "host"
     image: sigp/lighthouse:v3.4.0
     pull_policy: always
-    #    restart: unless-stopped
+    restart: unless-stopped
     volumes:
       - lighthouse-data-vc:/root/.lighthouse
     command:
