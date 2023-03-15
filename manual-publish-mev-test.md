@@ -7,6 +7,7 @@
 Create local volume directory
 
 ```shell
+# sudo docker restart safestake-mev-boost-sidecar-lighthouse-1 safestake-mev-boost-sidecar-geth-1 safestake-mev-boost-sidecar-mev-boost-1 safestake-mev-boost-sidecar-lighthouse-vc-1
 # sudo docker stop safestake-mev-boost-sidecar-lighthouse-1 safestake-mev-boost-sidecar-geth-1 safestake-mev-boost-sidecar-mev-boost-1 safestake-mev-boost-sidecar-lighthouse-vc-1
 # sudo docker rm safestake-mev-boost-sidecar-lighthouse-1 safestake-mev-boost-sidecar-geth-1 safestake-mev-boost-sidecar-mev-boost-1 safestake-mev-boost-sidecar-lighthouse-vc-1
 # ll
