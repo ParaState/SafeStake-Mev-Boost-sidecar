@@ -63,3 +63,5 @@ sudo docker restart safestake-mev-boost-sidecar-lighthouse-vc-1
 ```
 
 https://www.blocknative.com/blog/ethereum-validator-lighthouse-geth
+
+https://lighthouse-book.sigmaprime.io/suggested-fee-recipient.html
