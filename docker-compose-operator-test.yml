@@ -10,6 +10,8 @@ services:
       - geth-data:/data/geth
     command: [
       "--${GETH_NETWORK}",
+      "--syncmode=snap",
+      "--snapshot=false",
       "--http",
       "--http.addr=0.0.0.0",
       "--http.vhosts=*",
