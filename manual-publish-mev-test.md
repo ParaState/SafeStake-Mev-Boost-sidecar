@@ -68,3 +68,5 @@ https://www.blocknative.com/blog/ethereum-validator-lighthouse-geth
 https://lighthouse-book.sigmaprime.io/suggested-fee-recipient.html
 
 https://ethereum.stackexchange.com/questions/104003/error-snapshot-extension-registration-failed-when-connecting-nodes
+
+https://goerli.beaconcha.in/validator/b112e490a9e5ad33126e0b47842437c2481c292956408df18e6a21d40d3fb1837f668b65ec6b3b1dc2aa6186022b424b#charts
