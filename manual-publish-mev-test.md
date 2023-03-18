@@ -63,9 +63,14 @@ exit
 sudo docker restart safestake-mev-boost-sidecar-lighthouse-vc-1
 ```
 
-https://www.blocknative.com/blog/ethereum-validator-lighthouse-geth
-
+## 4 suggested-fee-recipient set
 https://lighthouse-book.sigmaprime.io/suggested-fee-recipient.html
+```shell
+sudo docker restart safestake-mev-boost-sidecar-lighthouse-vc-1
+```
+---
+
+https://www.blocknative.com/blog/ethereum-validator-lighthouse-geth
 
 https://ethereum.stackexchange.com/questions/104003/error-snapshot-extension-registration-failed-when-connecting-nodes
 
