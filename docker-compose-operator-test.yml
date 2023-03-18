@@ -10,7 +10,7 @@ services:
       - geth-data:/data/geth
     command: [
       "--${GETH_NETWORK}",
-       "--syncmode=snap",
+      "--syncmode=snap",
       "--http",
       "--http.addr=0.0.0.0",
       "--http.vhosts=*",
@@ -75,7 +75,7 @@ services:
         "--subscribe-all-subnets",
         "--import-all-attestations",
         "--validator-monitor-auto",
-        "--checkpoint-sync-url=https://prater-checkpoint-sync.stakely.io",
+        "--checkpoint-sync-url=https://goerli.checkpoint-sync.ethpandaops.io",
         #https://pawelurbanek.com/ethereum-node-aws
         "--disable-deposit-contract-sync",
         "--terminal-total-difficulty-override=${TTD}"
