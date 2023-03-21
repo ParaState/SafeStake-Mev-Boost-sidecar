@@ -1,7 +1,7 @@
 version: '3'
 services:
   geth:
-    image: ethereum/client-go:v1.11.4
+    image: ethereum/client-go:v1.11.3
     pull_policy: always
     restart: unless-stopped
     network_mode: "host"
@@ -34,7 +34,7 @@ services:
       - "8551"
       - "30303"
   mev-boost:
-    image: flashbots/mev-boost:1.4.0-portable
+    image: flashbots/mev-boost:1.5.0-portable
     network_mode: "host"
     pull_policy: always
     restart: unless-stopped
