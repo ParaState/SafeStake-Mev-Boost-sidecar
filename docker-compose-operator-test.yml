@@ -89,7 +89,7 @@ services:
 
   lighthouse-vc:
     network_mode: "host"
-    image: sigp/lighthouse:v3.4.0
+    image: sigp/lighthouse:v3.5.1
     pull_policy: always
     restart: unless-stopped
     volumes:
